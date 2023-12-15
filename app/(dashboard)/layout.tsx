@@ -3,7 +3,7 @@ import {Sidebar} from './_components/sidebar'
 import {Navbar} from './_components/navbar'
 // import '@uploadthing/react/styles.css'
 
-const layout = ({children}: {children: React.ReactNode}) => {
+const Layout = ({children}: {children: React.ReactNode}) => {
   return (
     <div className='h-full'>
       <div className='h-[80px] md:pl-56 fixed inset-y-0 w-full z-50'>
@@ -17,4 +17,4 @@ const layout = ({children}: {children: React.ReactNode}) => {
   )
 }
 
-export default layout
+export default Layout
