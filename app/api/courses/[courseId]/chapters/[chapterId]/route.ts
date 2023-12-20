@@ -45,12 +45,16 @@ export async function PATCH(
       })
 
       if (existingMuxData) {
-        await Video.Assets.del(existingMuxData.assetId)
-        await db.muxData.delete({
-          where: {
-            id: existingMuxData.id,
-          },
-        })
+        try {
+          await Video.Assets.del(existingMuxData.assetId)
+          await db.muxData.delete({
+            where: {
+              id: existingMuxData.id,
+            },
+          })
+        } catch (error) {
+          console.log('[EDIT_CHAPTER_ID_MUX_DATA]', error)
+        }
       }
 
       const asset = await Video.Assets.create({

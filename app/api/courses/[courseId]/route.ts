@@ -62,7 +62,11 @@ export async function DELETE(
 
     for (const chapter of course.chapters) {
       if (chapter.muxData?.assetId) {
-        await Video.Assets.del(chapter.muxData.assetId)
+        try {
+          await Video.Assets.del(chapter.muxData.assetId)
+        } catch (error) {
+          console.log('DELETE_COURSE_CHAPTERS_WITH_MUX_DATA_DEPRECATE')
+        }
       }
     }
 
